@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main
+    id="island"
+    class="island"
+    role="application"
+    aria-label="NEXUS AI desktop companion"
+    aria-expanded="false"
+    data-assistant-state="idle"
+  >
+
+    <!-- COMPACT ISLAND -->
+    <section
+      id="island-compact"
+      class="island__compact"
+      aria-label="Compact view"
+    >
+      <div
+        id="character"
+        class="character"
+        role="img"
+        aria-label="NEXUS character face"
+        data-expression="neutral"
+      >
+        <div id="eyes" class="character__eyes" aria-hidden="true">
+          <span
+            id="eye-left"
+            class="character__eye character__eye--left"
+            data-expression="neutral"
+          ></span>
+
+          <span
+            id="eye-right"
+            class="character__eye character__eye--right"
+            data-expression="neutral"
+          ></span>
+        </div>
+
+        <div
+          id="mouth"
+          class="character__mouth"
+          data-expression="neutral"
+          aria-hidden="true"
+        ></div>
+
+        <span
+          id="character-hand"
+          class="character__hand"
+          aria-hidden="true"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="22"
+            height="22"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M8 11V5.5a1.5 1.5 0 0 1 3 0V10" />
+            <path d="M11 10V4.5a1.5 1.5 0 0 1 3 0V10" />
+            <path d="M14 10V6a1.5 1.5 0 0 1 3 0v7" />
+            <path d="M17 12.5l1-1a1.5 1.5 0 0 1 2.2 2l-3.5 5A4 4 0 0 1 13.4 20h-2.2a4 4 0 0 1-3.3-1.8L5.2 14a1.6 1.6 0 0 1 2.5-2L10 14" />
+          </svg>
+        </span>
+      </div>
+
+      <div class="island__compact-meta">
+        <time
+          id="clock"
+          class="clock"
+          datetime=""
+          aria-label="Current time"
+        >--:--</time>
+
+        <p
+          id="voice-status"
+          class="voice-status"
+          role="status"
+          aria-live="polite"
+          data-state="idle"
+        >
+          <span class="voice-status__dot" aria-hidden="true"></span>
+          <span id="voice-status-text" class="voice-status__text">Idle</span>
+        </p>
+      </div>
+
+      <button
+        id="mic-button"
+        class="mic-button"
+        type="button"
+        aria-label="Activate voice assistant"
+        aria-pressed="false"
+        data-state="idle"
+      >
+        <svg
+          class="mic-button__icon"
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"
+            fill="currentColor"
+          />
+          <path
+            d="M5 11a1 1 0 0 1 2 0 5 5 0 0 0 10 0 1 1 0 0 1 2 0 7 7 0 0 1-6 6.92V20h3a1 1 0 0 1 0 2H8a1 1 0 0 1 0-2h3v-2.08A7 7 0 0 1 5 11z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </section>
+
+    <!-- EXPANDED WORKSPACE -->
+    <section
+      id="island-expanded"
+      class="island__expanded"
+      aria-label="NEXUS workspace"
+      aria-hidden="true"
+    >
+
+      <!-- HEADER -->
+      <header class="island__expanded-header">
+        <div class="header__identity">
+          <h1 id="dashboard-title" class="dashboard__title">NEXUS</h1>
+          <span class="header__subtitle">YOUR AI COMPANION</span>
+        </div>
+
+        <div class="header__right">
+          <span class="header__online">
+            <span class="header__online-dot"></span>
+            ONLINE
+          </span>
+
+          <time
+            id="clock-expanded"
+            class="clock clock--expanded"
+            datetime=""
+            aria-label="Current time"
+          >--:--</time>
+        </div>
+      </header>
+
+      <!-- SECTION CONTENT -->
+      <div id="workspace-content" class="workspace-content">
+
+        <!-- HOME -->
+        <section
+          id="section-home"
+          class="workspace-section is-active"
+          data-section="home"
+          aria-label="Home"
+        >
+          <div class="home-welcome">
+            <div>
+              <p class="section-eyebrow">YOUR PERSONAL DESKTOP AI</p>
+              <h2 class="home-title">Hello, Karan.</h2>
+              <p class="home-description">
+                What would you like to do today?
+              </p>
+            </div>
+
+            <div class="home-character-indicator" aria-hidden="true">
+              <span></span>
+            </div>
+          </div>
+
+          <div class="home-status-grid">
+            <article
+              id="dashboard-card-assistant"
+              class="dashboard-card"
+              aria-label="Assistant status"
+            >
+              <h3 class="dashboard-card__title">ASSISTANT</h3>
+              <p
+                id="assistant-message"
+                class="dashboard-card__body"
+                aria-live="polite"
+              >Ready</p>
+            </article>
+
+            <article
+              id="dashboard-card-voice"
+              class="dashboard-card"
+              aria-label="Voice assistant status"
+            >
+              <h3 class="dashboard-card__title">VOICE</h3>
+              <p
+                id="voice-status-expanded"
+                class="dashboard-card__body"
+                data-state="idle"
+              >Idle</p>
+            </article>
+
+            <article
+              id="dashboard-card-system"
+              class="dashboard-card"
+              aria-label="System status"
+            >
+              <h3 class="dashboard-card__title">SYSTEM</h3>
+              <p
+                id="system-status"
+                class="dashboard-card__body"
+              >Online</p>
+            </article>
+          </div>
+
+          <div class="home-quick-actions">
+            <h3 class="section-heading">QUICK ACCESS</h3>
+
+            <div class="quick-action-grid">
+              <button
+                class="quick-action"
+                type="button"
+                data-open-section="chat"
+              >
+                <span class="quick-action__icon">✦</span>
+                <span>Ask AI</span>
+              </button>
+
+              <button
+                class="quick-action"
+                type="button"
+                data-open-section="tools"
+              >
+                <span class="quick-action__icon">⌘</span>
+                <span>Explore Tools</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHAT -->
+        <section
+          id="section-chat"
+          class="workspace-section"
+          data-section="chat"
+          aria-label="AI Chat"
+          hidden
+        >
+          <div class="section-header">
+            <div>
+              <p class="section-eyebrow">POWERED BY GEMINI</p>
+              <h2 class="section-title">AI Assistant</h2>
+            </div>
+            <span class="section-icon">✦</span>
+          </div>
+
+          <section class="chat" aria-label="NEXUS AI chat">
+            <div
+              id="chat-messages"
+              class="chat__messages"
+              role="log"
+              aria-live="polite"
+              aria-relevant="additions text"
+              aria-label="Conversation"
+            ></div>
+
+            <p
+              id="chat-thinking"
+              class="chat__thinking"
+              role="status"
+              hidden
+            >
+              NEXUS is thinking…
+            </p>
+
+            <form id="chat-form" class="chat__form">
+              <label class="sr-only" for="chat-input">
+                Message NEXUS
+              </label>
+
+              <input
+                id="chat-input"
+                class="chat__input"
+                type="text"
+                maxlength="4000"
+                placeholder="Ask NEXUS anything…"
+                autocomplete="off"
+              />
+
+              <button
+                id="chat-send"
+                class="chat__send"
+                type="submit"
+              >Send</button>
+            </form>
+          </section>
+        </section>
+
+        <!-- VOICE -->
+        <section
+          id="section-voice"
+          class="workspace-section"
+          data-section="voice"
+          aria-label="Voice assistant"
+          hidden
+        >
+          <div class="section-header">
+            <div>
+              <p class="section-eyebrow">HANDS-FREE INTERACTION</p>
+              <h2 class="section-title">Voice Assistant</h2>
+            </div>
+            <span class="section-icon">◉</span>
+          </div>
+
+          <div class="feature-panel voice-panel">
+            <div class="voice-visual">
+              <div class="voice-orb">
+                <span>◉</span>
+              </div>
+            </div>
+
+            <h3>Talk to NEXUS</h3>
+            <p>
+              Voice interaction will be connected in the voice module.
+            </p>
+
+            <p class="feature-status">
+              Voice engine not configured yet
+            </p>
+          </div>
+        </section>
+
+        <!-- TOOLS -->
+        <section
+          id="section-tools"
+          class="workspace-section"
+          data-section="tools"
+          aria-label="Tools"
+          hidden
+        >
+          <div class="section-header">
+            <div>
+              <p class="section-eyebrow">YOUR DIGITAL TOOLKIT</p>
+              <h2 class="section-title">Tools</h2>
+            </div>
+            <span class="section-icon">⌘</span>
+          </div>
+
+          <div class="tools-grid">
+
+            <article class="tool-card">
+              <span class="tool-card__icon">◷</span>
+              <h3>Focus</h3>
+              <p>Focus sessions and productivity.</p>
+              <span class="tool-card__status">Coming soon</span>
+            </article>
+
+            <article class="tool-card">
+              <span class="tool-card__icon">▣</span>
+              <h3>Desktop</h3>
+              <p>System shortcuts and PC controls.</p>
+              <span class="tool-card__status">Coming soon</span>
+            </article>
+
+            <article class="tool-card">
+              <span class="tool-card__icon">▤</span>
+              <h3>Documents</h3>
+              <p>Work with your selected files.</p>
+              <span class="tool-card__status">Coming soon</span>
+            </article>
+
+            <article class="tool-card">
+              <span class="tool-card__icon">◇</span>
+              <h3>Gaming</h3>
+              <p>Your gaming companion.</p>
+              <span class="tool-card__status">Coming soon</span>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- MORE -->
+        <section
+          id="section-more"
+          class="workspace-section"
+          data-section="more"
+          aria-label="More options"
+          hidden
+        >
+          <div class="section-header">
+            <div>
+              <p class="section-eyebrow">PERSONALISE YOUR EXPERIENCE</p>
+              <h2 class="section-title">More</h2>
+            </div>
+            <span class="section-icon">⚙</span>
+          </div>
+
+          <div class="more-list">
+
+            <article class="more-item">
+              <span class="more-item__icon">⚙</span>
+              <div>
+                <h3>Settings</h3>
+                <p>Customise your NEXUS experience.</p>
+              </div>
+            </article>
+
+            <article class="more-item">
+              <span class="more-item__icon">◷</span>
+              <div>
+                <h3>Reminders</h3>
+                <p>Manage your reminders and tasks.</p>
+              </div>
+            </article>
+
+            <article class="more-item">
+              <span class="more-item__icon">✧</span>
+              <div>
+                <h3>About NEXUS</h3>
+                <p>Your personal desktop AI companion.</p>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- BOTTOM NAVIGATION -->
+      <nav
+        id="bottom-navigation"
+        class="bottom-navigation"
+        aria-label="Main navigation"
+      >
+        <button
+          class="nav-button is-active"
+          type="button"
+          data-nav-section="home"
+          aria-label="Home"
+          aria-current="page"
+        >
+          <span class="nav-button__icon" aria-hidden="true">⌂</span>
+          <span class="nav-button__label">Home</span>
+        </button>
+
+        <button
+          class="nav-button"
+          type="button"
+          data-nav-section="chat"
+          aria-label="Chat"
+        >
+          <span class="nav-button__icon" aria-hidden="true">✦</span>
+          <span class="nav-button__label">Chat</span>
+        </button>
+
+        <button
+          class="nav-button"
+          type="button"
+          data-nav-section="voice"
+          aria-label="Voice"
+        >
+          <span class="nav-button__icon" aria-hidden="true">◉</span>
+          <span class="nav-button__label">Voice</span>
+        </button>
+
+        <button
+          class="nav-button"
+          type="button"
+          data-nav-section="tools"
+          aria-label="Tools"
+        >
+          <span class="nav-button__icon" aria-hidden="true">▦</span>
+          <span class="nav-button__label">Tools</span>
+        </button>
+
+        <button
+          class="nav-button"
+          type="button"
+          data-nav-section="more"
+          aria-label="More"
+        >
+          <span class="nav-button__icon" aria-hidden="true">•••</span>
+          <span class="nav-button__label">More</span>
+        </button>
+      </nav>
+
+    </section>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
